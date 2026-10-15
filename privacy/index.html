@@ -23,134 +23,158 @@
 
   <h2>1. Who We Are</h2>
   <p>
-    Proudoo (formerly Chorbit) ("we", "us", "our") is a family chore management application.
+    Proudoo (formerly Chorbit) ("we", "us", "our") is a family chore app published on Google Play.
     For privacy-related inquiries, contact us at:
     <a href="mailto:support@proudoo.app">support@proudoo.app</a>
   </p>
 
   <h2>2. What This App Does</h2>
   <p>
-    Proudoo is a gamified chore management app for families. Parents create a family account, assign
-    chores to their children, and children complete chores to earn XP, streaks, and rewards. The app is
-    designed to be used by parents and their minor children under direct parental supervision.
+    Proudoo is a gamified chore app for families. Parents create a family account, set up quests (chores)
+    and rewards for their children, and children complete quests to earn XP, coins, streaks and rewards.
+    The app is designed to be used by parents and their minor children under direct parental supervision.
   </p>
 
   <h2>3. Information We Collect</h2>
 
   <p><strong>From Parents</strong></p>
   <ul>
-    <li>Email address and password (via Clerk authentication)</li>
-    <li>First name and display name</li>
-    <li>Family name and configuration</li>
-    <li>Chore and reward settings you create</li>
+    <li>Email address and password (handled by our sign-in provider, Clerk; we never see your password)</li>
+    <li>Display name</li>
+    <li>Family name and settings, including whether the optional AI photo check is turned on</li>
+    <li>The quests, rewards, notes and messages you create (for example "proud of you" messages)</li>
   </ul>
 
-  <p><strong>From Children</strong></p>
+  <p><strong>About Children (entered by the parent or created by using the app)</strong></p>
   <ul>
-    <li>Child's first name and age (entered by the parent)</li>
-    <li>Chore completion activity and history</li>
-    <li>XP, streak, and level progression data</li>
-    <li>Avatar and in-app choices</li>
+    <li>First name and birth year, entered by the parent</li>
+    <li>A 4-digit PIN, stored only in hashed form</li>
+    <li>Quest completions and their history, XP, level, coins, streaks and avatar</li>
+    <li>Rewards, wishes and the coin bank (a ledger the parent fills in; no real money moves through the app)</li>
+    <li><strong>Photos</strong> a child takes as proof that a quest is done (optional, see section 4)</li>
+    <li>If the parent turned on the AI photo check: the AI's score, label and short feedback for each photo (see section 5)</li>
   </ul>
+  <p>We do not collect a child's email address, phone number, location or advertising ID. Children do not have their own sign-in account; they join the family with a code and PIN set up by the parent.</p>
 
   <p><strong>Automatically Collected</strong></p>
   <ul>
-    <li>Device type and operating system version</li>
-    <li>App version</li>
-    <li>Basic usage logs (errors, crash reports) for app stability</li>
+    <li>Push notification tokens for the devices you and your children use, so the app can send notifications</li>
+    <li>Device type, operating system and app version</li>
+    <li>Crash and error reports (see Sentry in section 7)</li>
+    <li>Server logs, which include IP addresses, kept for a limited period for security and troubleshooting</li>
   </ul>
-
   <p>
-    We do <strong>not</strong> collect location data, contacts, or microphone data. If you choose to
-    upload a photo proof for chore completion, that photo is stored on our server and associated with
-    the chore completion record only.
+    We do <strong>not</strong> collect location data, contacts or microphone data, and we do not use the
+    advertising ID. The camera (and, where enabled, the photo gallery) is used only when a child chooses to
+    attach a photo to a quest.
   </p>
 
   <h2>4. How We Use Your Information</h2>
   <p>We use the information we collect to:</p>
   <ul>
     <li>Authenticate and identify family accounts</li>
-    <li>Display chore progress, streaks, XP, and rewards to the correct family</li>
-    <li>Deliver "I'm proud of you" messages from parent to child</li>
-    <li>Maintain app functionality and fix technical issues</li>
+    <li>Show quests, progress, streaks, XP, coins and rewards to the right family</li>
+    <li>Let parents review and approve completed quests, including any photo proof</li>
+    <li>Run the optional AI photo check, when the parent turns it on (section 5)</li>
+    <li>Send notifications (for example a quest submitted or approved, a "proud of you" message, a streak reminder)</li>
+    <li>Keep the app working, find and fix errors</li>
     <li>Respond to support requests</li>
   </ul>
-  <p>We do <strong>not</strong> use your data for advertising, profiling, or any purpose outside of providing the Proudoo service.</p>
+  <p>We do <strong>not</strong> use your data for advertising, marketing or profiling, and we have no ads or analytics tracking in the app.</p>
 
-  <h2>5. Children's Privacy (COPPA Notice)</h2>
+  <h2 id="ai-photo-check">5. Optional AI Photo Check</h2>
+  <p>
+    Parents can turn on an <strong>AI photo check</strong> in Settings. It is <strong>off by default</strong>,
+    and a notice explaining what is sent is shown before it can be turned on.
+  </p>
+  <ul>
+    <li><strong>What is sent:</strong> when a child submits a quest with a photo, the photo and the quest's title and description are sent to Google Cloud's AI service (Vertex AI, Gemini). The child's name, birth year and account details are not sent.</li>
+    <li><strong>What comes back:</strong> a score, a label ("looks complete", "uncertain" or "looks incomplete") and one short sentence of feedback for the parent. This is stored with the quest completion.</li>
+    <li><strong>Who decides:</strong> the result is advice for the parent, who makes the final decision. If the parent also turns on auto-approve, quests whose score reaches the threshold the parent chose are approved automatically; the parent can turn this off at any time.</li>
+    <li><strong>How Google handles it:</strong> Google processes this data as our service provider under its Google Cloud terms. Google does not use it to train its AI models. Google may keep it in memory for up to 24 hours to speed up processing, and may log requests to detect abuse of its service, as its terms allow.</li>
+    <li><strong>Turning it off:</strong> parents can turn the AI photo check off at any time in Settings. Photos are then no longer sent.</li>
+  </ul>
+
+  <h2>6. Children's Privacy (COPPA Notice)</h2>
   <p>
     Proudoo is designed for use by families, including children under 13, under
-    <strong>direct parental supervision and control</strong>. Parents create and manage all accounts.
-    Children do not independently create accounts or provide their own information directly.
+    <strong>direct parental supervision and control</strong>. Parents create and manage the family account.
+    Children do not create accounts on their own or provide contact information.
   </p>
   <p>Consistent with the Children's Online Privacy Protection Act (COPPA):</p>
   <ul>
-    <li>We do not knowingly solicit personal information directly from children under 13</li>
-    <li>All child profile data is entered and managed by the parent</li>
-    <li>Parents may review, update, or delete their child's data at any time by contacting us or using the account deletion feature within the app</li>
+    <li>We do not knowingly collect personal information directly from children under 13 without a parent's involvement; the parent sets up each child's profile</li>
+    <li>Photos are only taken when a child chooses to attach one. In the app, only the child's own family can see them; our staff can open one only for support or safety reasons, and every such access is logged</li>
+    <li>Children's photos are sent to the AI service only if the parent has turned the AI photo check on (section 5)</li>
+    <li>Parents can review, change or delete their child's data at any time in the app, or by contacting us</li>
     <li>We do not share children's data with third parties for advertising or marketing</li>
   </ul>
 
-  <h2>6. Data Sharing</h2>
+  <h2>7. Data Sharing</h2>
   <p>We do <strong>not</strong> sell your personal data.</p>
   <p>We share data only with the following service providers, strictly to operate the app:</p>
-  <table>
+  <div class="table-wrap"><table>
     <thead>
-      <tr><th>Provider</th><th>Purpose</th></tr>
+      <tr><th>Provider</th><th>What they receive</th><th>Purpose</th></tr>
     </thead>
     <tbody>
-      <tr><td><strong>Clerk</strong></td><td>User authentication and session management</td></tr>
-      <tr><td><strong>Google Cloud / Neon</strong></td><td>Secure database hosting (your family data is stored here)</td></tr>
-      <tr><td><strong>Expo / EAS</strong></td><td>App distribution and updates</td></tr>
+      <tr><td><strong>Clerk</strong></td><td>Parents' email, password and display name</td><td>Parent sign-in and sessions</td></tr>
+      <tr><td><strong>Neon</strong></td><td>All family data listed in section 3, except photos</td><td>Database hosting</td></tr>
+      <tr><td><strong>Google Cloud</strong></td><td>Quest photos (Cloud Storage); our app servers and server logs (Cloud Run)</td><td>Hosting and file storage</td></tr>
+      <tr><td><strong>Google Cloud Vertex AI (Gemini)</strong></td><td>The photo, quest title and description, only if the parent turned on the AI photo check</td><td>AI photo check (section 5)</td></tr>
+      <tr><td><strong>Expo, and Google Firebase Cloud Messaging</strong></td><td>Device push tokens and the notification text, which can include a child's first name and quest titles</td><td>Delivering notifications; app updates</td></tr>
+      <tr><td><strong>Sentry</strong></td><td>Error details, device type, app version, and a random account ID (no names or email)</td><td>Crash and error reporting</td></tr>
     </tbody>
-  </table>
-  <p>Each provider is bound by their own privacy policies and data processing agreements. We do not share data with any other third party.</p>
+  </table></div>
+  <p>Each provider processes data on our behalf under its own terms and data processing agreements. Some of them may process data outside your country, including in the United States and the European Union. We do not share data with any other third party, except where required by law.</p>
 
-  <h2>7. Data Security</h2>
+  <h2>8. Data Security</h2>
   <p>We protect your data using:</p>
   <ul>
     <li>HTTPS/TLS encryption for all data in transit</li>
-    <li>Secure, access-controlled database servers</li>
-    <li>Authentication tokens managed by Clerk (industry-standard practices)</li>
+    <li>Access-controlled database and storage; quest photos are private, served only through our app, and staff access to them is logged</li>
+    <li>Hashed child PINs, and parent sign-in managed by Clerk</li>
   </ul>
   <p>No method of electronic storage is 100% secure. We are committed to using commercially reasonable means to protect your information.</p>
 
-  <h2>8. Data Retention</h2>
-  <p>
-    We retain your account data for as long as your account is active. When an account is deleted, all
-    associated data — including child profiles, chore history, XP, streaks, and rewards — is permanently
-    and immediately deleted.
-  </p>
+  <h2>9. Data Retention</h2>
+  <ul>
+    <li><strong>Quest photos</strong> are deleted automatically 30 days after the parent reviews the quest.</li>
+    <li><strong>AI photo check results</strong> are kept with the quest completion record.</li>
+    <li><strong>Everything else</strong> (account, child profiles, quest history, rewards, coin bank) is kept as long as the account is active.</li>
+    <li>When an account is deleted, its data is deleted straight away (see section 10). Short-term backups held by our hosting providers expire on their normal schedule, and crash reports expire automatically.</li>
+  </ul>
 
-  <h2>9. Account Deletion</h2>
+  <h2>10. Account Deletion</h2>
   <p>You can request full deletion of your account and all associated data in two ways:</p>
   <ol>
-    <li><strong>In-app:</strong> Go to Settings → Account → Delete Account</li>
+    <li><strong>In-app:</strong> Go to Settings → Delete Account</li>
     <li><strong>By email:</strong> Send a deletion request to <a href="mailto:support@proudoo.app">support@proudoo.app</a> with the subject line "Account Deletion Request" (details: <a href="/delete-account/">proudoo.app/delete-account</a>)</li>
   </ol>
   <p>
-    Upon deletion, all parent and child profile data, chore history, and rewards data will be permanently
-    and immediately removed.
+    If you are the only parent in your family, deletion removes the whole family: parent and child profiles,
+    quest history, photos, rewards and notification tokens. If another parent shares your family, only your
+    own account is removed and the family stays with the other parent.
   </p>
 
-  <h2>10. Your Rights</h2>
+  <h2>11. Your Rights</h2>
   <p>Depending on your jurisdiction, you may have the right to:</p>
   <ul>
-    <li>Access the personal data we hold about you</li>
+    <li>Access the personal data we hold about you or your child</li>
     <li>Request correction of inaccurate data</li>
     <li>Request deletion of your data</li>
-    <li>Withdraw consent at any time</li>
+    <li>Withdraw consent at any time, for example by turning off the AI photo check</li>
   </ul>
   <p>To exercise any of these rights, contact us at <a href="mailto:support@proudoo.app">support@proudoo.app</a>.</p>
 
-  <h2>11. Changes to This Policy</h2>
+  <h2>12. Changes to This Policy</h2>
   <p>
     We may update this Privacy Policy from time to time. We will notify you of significant changes by
-    updating the "Last Updated" date at the top of this page. Continued use of the app after changes
-    constitutes acceptance of the updated policy.
+    updating the "Last Updated" date at the top of this page, and in the app where the change affects how
+    children's data is used.
   </p>
 
-  <h2>12. Contact Us</h2>
+  <h2>13. Contact Us</h2>
   <p>
     <strong>Proudoo</strong> (formerly Chorbit)<br />
     Email: <a href="mailto:support@proudoo.app">support@proudoo.app</a>

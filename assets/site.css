@@ -70,3 +70,4 @@ footer {
   color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 18px;
 }
 footer a { color: var(--muted); }
+.table-wrap { overflow-x: auto; }

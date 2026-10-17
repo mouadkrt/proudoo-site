@@ -20,7 +20,7 @@
   <p class="meta"><a href="/privacy/" hreflang="en" lang="en">English version</a></p>
   <p class="meta">
     <strong>Date d'entrée en vigueur :</strong> 1er juin 2026 &nbsp;|&nbsp;
-    <strong>Dernière mise à jour :</strong> 15 octobre 2026
+    <strong>Dernière mise à jour :</strong> 17 octobre 2026
   </p>
 
   <h2>1. Qui sommes-nous</h2>
@@ -131,6 +131,7 @@
       <tr><td><strong>Google Cloud Vertex AI (Gemini)</strong></td><td>La photo, le titre et la description de la quête, seulement si le parent a activé l'évaluation IA des photos</td><td>Évaluation IA des photos (section 5)</td></tr>
       <tr><td><strong>Expo, et Google Firebase Cloud Messaging</strong></td><td>Les jetons de notification des appareils et le texte des notifications, qui peut contenir le prénom d'un enfant et des titres de quêtes</td><td>Envoi des notifications ; mises à jour de l'application</td></tr>
       <tr><td><strong>Sentry</strong></td><td>Détails des erreurs, type d'appareil, version de l'application et un identifiant de compte aléatoire (ni nom ni courriel)</td><td>Rapports de plantage et d'erreur</td></tr>
+      <tr><td><strong>Spacemail</strong> (Spaceship)</td><td>L'adresse courriel des parents et le contenu des courriels que nous leur envoyons</td><td>Notre courriel (support@proudoo.app), y compris les avis de compte inactif</td></tr>
     </tbody>
   </table></div>
   <p>Chaque fournisseur traite les renseignements pour notre compte, selon ses propres conditions et ententes de traitement des données. Certains peuvent les traiter hors de votre pays ou de votre province, notamment aux États-Unis et dans l'Union européenne. Nous ne communiquons aucun renseignement à d'autres tiers, sauf si la loi l'exige.</p>
@@ -146,10 +147,14 @@
 
   <h2>9. Conservation des renseignements</h2>
   <ul>
-    <li>Les <strong>photos des quêtes</strong> sont supprimées automatiquement 30 jours après la vérification de la quête par le parent.</li>
-    <li>Les <strong>résultats de l'évaluation IA</strong> sont conservés avec la quête accomplie.</li>
-    <li><strong>Tout le reste</strong> (compte, profils des enfants, historique des quêtes, récompenses, banque de pièces) est conservé tant que le compte est actif.</li>
-    <li>Lorsqu'un compte est supprimé, ses renseignements sont supprimés immédiatement (voir la section 10). Les sauvegardes à court terme de nos hébergeurs expirent selon leur calendrier normal, et les rapports de plantage expirent automatiquement.</li>
+    <li>Les <strong>photos des quêtes</strong> sont supprimées automatiquement 30 jours après la vérification de la quête par le parent, ou 30 jours après leur envoi si elles n'ont jamais été vérifiées.</li>
+    <li>Les <strong>quêtes accomplies</strong> (statut, notes du parent, résultats de l'évaluation IA) sont supprimées après <strong>12 mois</strong>.</li>
+    <li><strong>Historique d'activité</strong> : après 12 mois, les détails (titres des quêtes, notes) sont effacés ; seuls le type et la date de chaque activité sont conservés, à des fins statistiques.</li>
+    <li>Les <strong>jetons de notification</strong> sont supprimés après 60 jours sans ouverture de l'application sur l'appareil.</li>
+    <li>Les <strong>rapports de plantage</strong> sont supprimés par Sentry après <strong>30 jours</strong> ; les <strong>journaux du serveur</strong> après <strong>30 jours</strong>.</li>
+    <li><strong>Tout le reste</strong> (compte, profils des enfants, récompenses, banque de pièces) est conservé tant que le compte est utilisé.</li>
+    <li><strong>Comptes inactifs</strong> : si personne dans une famille n'utilise Proudoo pendant <strong>24 mois</strong>, nous écrivons à chaque parent de la famille. Si le compte n'est toujours pas utilisé <strong>30 jours</strong> plus tard, la famille et toutes ses données sont supprimées. Il suffit d'ouvrir l'application pour le conserver.</li>
+    <li>Lorsqu'un compte est supprimé, ses renseignements sont supprimés immédiatement (voir la section 10). Les éventuelles sauvegardes à court terme de nos hébergeurs expirent selon leur calendrier normal.</li>
   </ul>
 
   <h2>10. Suppression du compte</h2>

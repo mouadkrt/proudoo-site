@@ -20,7 +20,7 @@
   <p class="meta"><a href="/fr/privacy/" hreflang="fr" lang="fr">Version française</a></p>
   <p class="meta">
     <strong>Effective Date:</strong> June 1, 2026 &nbsp;|&nbsp;
-    <strong>Last Updated:</strong> October 15, 2026
+    <strong>Last Updated:</strong> October 17, 2026
   </p>
 
   <h2>1. Who We Are</h2>
@@ -130,6 +130,7 @@
       <tr><td><strong>Google Cloud Vertex AI (Gemini)</strong></td><td>The photo, quest title and description, only if the parent turned on the AI photo check</td><td>AI photo check (section 5)</td></tr>
       <tr><td><strong>Expo, and Google Firebase Cloud Messaging</strong></td><td>Device push tokens and the notification text, which can include a child's first name and quest titles</td><td>Delivering notifications; app updates</td></tr>
       <tr><td><strong>Sentry</strong></td><td>Error details, device type, app version, and a random account ID (no names or email)</td><td>Crash and error reporting</td></tr>
+      <tr><td><strong>Spacemail</strong> (Spaceship)</td><td>Parents' email address, and the content of emails we send them</td><td>Our email (support@proudoo.app), including inactive-account notices</td></tr>
     </tbody>
   </table></div>
   <p>Each provider processes data on our behalf under its own terms and data processing agreements. Some of them may process data outside your country, including in the United States and the European Union. We do not share data with any other third party, except where required by law.</p>
@@ -145,10 +146,14 @@
 
   <h2>9. Data Retention</h2>
   <ul>
-    <li><strong>Quest photos</strong> are deleted automatically 30 days after the parent reviews the quest.</li>
-    <li><strong>AI photo check results</strong> are kept with the quest completion record.</li>
-    <li><strong>Everything else</strong> (account, child profiles, quest history, rewards, coin bank) is kept as long as the account is active.</li>
-    <li>When an account is deleted, its data is deleted straight away (see section 10). Short-term backups held by our hosting providers expire on their normal schedule, and crash reports expire automatically.</li>
+    <li><strong>Quest photos</strong> are deleted automatically 30 days after the parent reviews the quest, or 30 days after it was submitted if it was never reviewed.</li>
+    <li><strong>Completed quests</strong> (status, parent notes, AI photo check results) are deleted after <strong>12 months</strong>.</li>
+    <li><strong>Activity history</strong>: after 12 months, the details (quest titles, notes) are erased; only the type and date of each activity are kept, for statistics.</li>
+    <li><strong>Notification tokens</strong> are deleted after 60 days without the app being opened on that device.</li>
+    <li><strong>Crash reports</strong> are deleted by Sentry after <strong>30 days</strong>; <strong>server logs</strong> after <strong>30 days</strong>.</li>
+    <li><strong>Everything else</strong> (account, child profiles, rewards, coin bank) is kept as long as the account is in use.</li>
+    <li><strong>Inactive accounts</strong>: if nobody in a family uses Proudoo for <strong>24 months</strong>, we email every parent in the family. If the account is still not used <strong>30 days</strong> later, the family and all its data are deleted. Opening the app is enough to keep it.</li>
+    <li>When an account is deleted, its data is deleted straight away (see section 10). Any short-term backups held by our hosting providers expire on their normal schedule.</li>
   </ul>
 
   <h2>10. Account Deletion</h2>

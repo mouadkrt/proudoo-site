@@ -10,4 +10,4 @@ Public website for **Proudoo** — served by GitHub Pages at **https://proudoo.a
 
 Plain HTML + one stylesheet (`assets/site.css`), no build step. Edit a page, commit to `main`, and Pages republishes in about a minute.
 
-App code and everything else live in the private `mouadkrt/chorbit` repo. Keep this repo public-safe: no secrets, no internal notes.
+App code and everything else live in a separate private repo. Keep this repo public-safe: no secrets, no internal notes.

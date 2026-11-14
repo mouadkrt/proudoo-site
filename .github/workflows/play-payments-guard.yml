@@ -1,0 +1,17 @@
+name: Play payments guard
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  no-pass-link-from-app-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No page reachable from the app links to /pass/
+        run: python3 .github/scripts/check_pass_links.py

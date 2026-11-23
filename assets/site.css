@@ -60,10 +60,12 @@ th { font-weight: 600; }
 .hero h1 { font-size: 44px; margin-top: 20px; }
 .hero p { font-size: 19px; color: var(--muted); max-width: 520px; margin: 8px auto 0; }
 .button {
-  display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; padding: 12px 22px; border-radius: 12px;
+  display: inline-block; margin-top: 24px; padding: 12px 22px; border-radius: 12px;
   background: var(--brand); color: #fff; font-weight: 600; text-decoration: none;
 }
-.button .icon { flex: none; }
+/* Official Google Play badge (unaltered PNG with its own transparent padding). Overrides the .hero img icon styling. */
+.play-badge { display: inline-block; margin-top: 16px; line-height: 0; }
+.play-badge img, .hero .play-badge img { width: auto; height: 80px; border-radius: 0; box-shadow: none; }
 .button:hover { background: var(--brand-deep); color: #fff; }
 
 footer {

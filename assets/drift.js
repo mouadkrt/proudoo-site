@@ -127,7 +127,8 @@
     C.ink = rgb(cs.getPropertyValue("--ink") || "#1b1530");
     C.muted = rgb(cs.getPropertyValue("--muted") || "#5d5873");
     C.card = rgb(cs.getPropertyValue("--card") || "#ffffff");
-    C.dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var th = document.documentElement.getAttribute("data-theme");
+    C.dark = th ? th === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
 
   /* ---------- layout ---------- */
@@ -352,6 +353,7 @@
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
   var onScheme = function () { readColors(); draw(); };
   if (mq.addEventListener) mq.addEventListener("change", onScheme); else if (mq.addListener) mq.addListener(onScheme);
+  document.addEventListener("proudoo:theme", onScheme);
 
   readColors();
   generate(pickSeed());

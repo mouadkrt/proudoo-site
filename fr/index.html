@@ -45,6 +45,23 @@
 <p>La plupart des tableaux de tâches finissent sur le frigo, puis dans un tiroir. Les rappels deviennent des reproches, et la tâche devient un conflit. Proudoo part d'une autre idée : un enfant fier de ce qu'il a fait, et un parent soulagé. Les tâches ne sont que le chemin.</p>
 <p>L'application est donc construite autour des moments qui comptent : la quête que votre enfant a terminée tout seul, la série qu'il a gardée un jour chargé, la récompense qu'il a choisie lui-même, et le « Je suis fier de toi » que vous envoyez d'un geste.</p>
 
+<section class="drift" id="drift" aria-labelledby="drift-title">
+  <h2 id="drift-title">Ce que quelques bons jours de plus font en un an</h2>
+  <p>Tous les enfants ont des semaines en désordre, et une mauvaise semaine ne dit rien. Ce qui compte, c'est une petite pente régulière vers les bons jours. Ci-dessous, une vraie simulation dessinée en direct : bougez le curseur et voyez ce que quelques bons jours de plus changent sur une année.</p>
+  <div class="card">
+    <p class="drift-caption" aria-live="polite">Les mauvais jours ne comptent pas. La direction, si.</p>
+    <canvas class="drift-canvas" role="img" aria-label="Simulation sur 365 jours d'un enfant avec un peu plus de bons jours que cent autres enfants."></canvas>
+    <div class="drift-legend"><span>Votre enfant</span><span class="crowd">100 enfants à 50 %</span></div>
+  </div>
+  <div class="drift-controls">
+    <label for="drift-p">Bons jours : <output class="drift-p-out" for="drift-p">55 %</output></label>
+    <input type="range" id="drift-p" min="50" max="60" step="1" value="55">
+    <button type="button" class="drift-replay">Rejouer une autre année</button>
+  </div>
+  <p class="meta">Chaque visite tire une nouvelle année au hasard. Nous montrons des années typiques, proches du résultat moyen, jamais les plus chanceuses.</p>
+</section>
+<script src="/assets/drift.js" defer></script>
+
 <div class="card">
   <h2>Comment ça marche</h2>
   <ol class="steps">

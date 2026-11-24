@@ -45,6 +45,23 @@
 <p>Most chore charts end up on the fridge, then in a drawer. Reminders turn into nagging, and the chore becomes a fight. Proudoo starts from a different idea: a child who feels proud of what they did, and a parent who feels relief. The chores are just the way there.</p>
 <p>So the app is built around the moments that matter: the quest your child finished on their own, the streak they kept on a busy day, the reward they picked themselves, and the “I'm proud of you” you send with one tap.</p>
 
+<section class="drift" id="drift" aria-labelledby="drift-title">
+  <h2 id="drift-title">What a few more good days do in a year</h2>
+  <p>Every child has messy weeks, and one bad week says nothing. What matters is a small, steady tilt toward good days. Below is a real simulation, drawn live: move the slider and see what a few more good days do over a year.</p>
+  <div class="card">
+    <p class="drift-caption" aria-live="polite">Bad days don't count. Direction does.</p>
+    <canvas class="drift-canvas" role="img" aria-label="Simulation over 365 days of a child with slightly more good days than 100 other children."></canvas>
+    <div class="drift-legend"><span>Your child</span><span class="crowd">100 children at 50 %</span></div>
+  </div>
+  <div class="drift-controls">
+    <label for="drift-p">Good days: <output class="drift-p-out" for="drift-p">55 %</output></label>
+    <input type="range" id="drift-p" min="50" max="60" step="1" value="55">
+    <button type="button" class="drift-replay">Replay a new year</button>
+  </div>
+  <p class="meta">Each visit draws a new year at random. We show typical years, close to the average result, never the luckiest ones.</p>
+</section>
+<script src="/assets/drift.js" defer></script>
+
 <div class="card">
   <h2>How it works</h2>
   <ol class="steps">

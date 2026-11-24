@@ -54,6 +54,7 @@
       <canvas class="drift-canvas" role="img" aria-label="Simulation over 365 days of a child taking slightly more steps forward than 100 children left to chance."></canvas>
       <button type="button" class="anim-replay drift-replay" aria-label="Replay a new year"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Replay</span></button>
     </div>
+    <div class="anim-nav" role="group" aria-label="Animation steps"><button type="button" class="anim-prev" aria-label="Previous step"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="anim-dot" aria-label="1. One week" title="One week"></button><button type="button" class="anim-dot" aria-label="2. 100 children" title="100 children"></button><button type="button" class="anim-dot" aria-label="3. One year" title="One year"></button><button type="button" class="anim-dot" aria-label="4. The direction" title="The direction"></button><button type="button" class="anim-next" aria-label="Next step"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="anim-pause" aria-label="Pause" aria-pressed="false"><svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button></div>
     <div class="drift-foot">
       <div class="drift-legend"><span>Your child, a little more often forward</span><span class="crowd">100 children left to chance</span></div>
       <div class="drift-controls">
@@ -63,7 +64,6 @@
     </div>
     <div class="drift-cta"><p>See your child's steps forward. Proudoo is free on Android.</p><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.mouadkrt.chorbit" target="_blank" rel="noopener" data-goatcounter-click="play-home-drift-en" data-goatcounter-title="Google Play (home-drift, en)"><img src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="646" height="250"></a></div>
   </div>
-  <p class="meta">Each visit draws a new year at random. We show typical years, close to the average result, never the luckiest ones.</p>
 </section>
 <script src="/assets/drift.js" defer></script>
 
@@ -76,6 +76,7 @@
       <canvas class="cont-canvas" aria-hidden="true"></canvas>
       <button type="button" class="anim-replay cont-replay" aria-label="Replay the four stages"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Replay</span></button>
     </div>
+    <div class="anim-nav" role="group" aria-label="Animation steps"><button type="button" class="anim-prev" aria-label="Previous step"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="anim-dot" aria-label="1. Coins" title="Coins"></button><button type="button" class="anim-dot" aria-label="2. Your eyes" title="Your eyes"></button><button type="button" class="anim-dot" aria-label="3. Meaning" title="Meaning"></button><button type="button" class="anim-dot" aria-label="4. Their own self" title="Their own self"></button><button type="button" class="anim-next" aria-label="Next step"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="anim-pause" aria-label="Pause" aria-pressed="false"><svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button></div>
     <ol class="cont-steps"><li><button type="button" class="cont-step"><b>1</b><span>Coins</span></button></li><li><button type="button" class="cont-step"><b>2</b><span>Your eyes</span></button></li><li><button type="button" class="cont-step"><b>3</b><span>Meaning</span></button></li><li><button type="button" class="cont-step" aria-current="step"><b>4</b><span>Their own self</span></button></li></ol>
     <div class="cont-guide" aria-hidden="true"><span>with Proudoo</span></div>
     <p class="cont-final">Proudoo walks with your child through the first three stages, then steps aside. The day they no longer need us is the day we've succeeded.</p>
@@ -83,7 +84,7 @@
   </div>
   <div class="research">
     <p class="research-tag">Backed by research</p>
-    <p><strong>Self-determination theory</strong>, by psychologists Edward Deci and Richard Ryan, has been studied since the 1970s and is one of the most tested theories of human motivation. The four stages above are its own: external, introjected, identified and integrated motivation. <a href="https://selfdeterminationtheory.org/" target="_blank" rel="noopener">About the theory</a></p>
+    <p><strong>Self-determination theory</strong>, by psychologists Edward Deci and Richard Ryan, has been studied since the 1970s and is one of the most tested theories of human motivation. The four stages above are its own: external, introjected, identified and integrated motivation.</p>
   </div>
 </section>
 <script src="/assets/continuum.js" defer></script>
@@ -143,6 +144,15 @@
   <h2>Start with one quest today</h2>
   <p>For children aged 6 to 14. In English and French.</p>
   <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.mouadkrt.chorbit" target="_blank" rel="noopener" data-goatcounter-click="play-home-bottom-en" data-goatcounter-title="Google Play (home-bottom, en)"><img src="/assets/badges/google-play-en.png" alt="Get it on Google Play" width="646" height="250"></a><p class="meta cta-note">Free to download · Android · No ads · English &amp; French</p>
+<p class="iphone-hint"><a href="/faq/#iphone" class="iphone-open" data-goatcounter-click="iphone-hint-en" data-goatcounter-title="iPhone hint (home-bottom, en)">On iPhone? Use Proudoo as a web app</a></p>
+<dialog class="iphone-dialog" aria-labelledby="iphone-title-en">
+  <h3 id="iphone-title-en">Proudoo on iPhone</h3>
+  <p>Proudoo isn't on the App Store yet, but it works on iPhone as a web app:</p>
+  <ol><li>Open <strong>web.proudoo.app</strong> in Safari.</li><li>Tap the Share button.</li><li>Tap <strong>Add to Home Screen</strong>.</li></ol>
+  <p class="meta">Proudoo then opens full-screen with its own icon, like any app. For now there are no notifications on iPhone.</p>
+  <div class="iphone-actions"><a class="iphone-go" href="https://web.proudoo.app" target="_blank" rel="noopener" data-goatcounter-click="iphone-webapp-en" data-goatcounter-title="Web app (home iPhone popup, en)">Open web.proudoo.app</a><button type="button" class="iphone-close">Close</button></div>
+</dialog>
+<script src="/assets/iphone.js" defer></script>
 </section>
 <p class="meta">Questions? <a href="mailto:support@proudoo.app">support@proudoo.app</a></p>
 </main>

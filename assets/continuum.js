@@ -161,39 +161,60 @@
   }
 
   /* ---------- playback ---------- */
+  var nav = root.querySelector(".anim-nav");
+  var dots = nav ? Array.prototype.slice.call(nav.querySelectorAll(".anim-dot")) : [];
+  var btnPrev = nav && nav.querySelector(".anim-prev"), btnNext = nav && nav.querySelector(".anim-next");
+  var btnPause = nav && nav.querySelector(".anim-pause");
   var running = false, last = null, hold = 0, auto = false, visible = !("IntersectionObserver" in window);
 
+  function sync() {
+    var done = to === 3 && tp >= 1 && !auto;
+    root.classList.toggle("is-done", done);
+    dots.forEach(function (d, k) { d.setAttribute("aria-current", k === to ? "step" : "false"); });
+    if (btnPause) {
+      var playing = auto && to < 3;
+      btnPause.setAttribute("aria-pressed", playing ? "false" : "true");
+      btnPause.classList.toggle("is-paused", !playing);
+    }
+  }
   function setStage(n) {
     caption.textContent = quotes[n].textContent;
     root.setAttribute("data-stage", String(n + 1));
     steps.forEach(function (b, k) { b.setAttribute("aria-current", k === n ? "step" : "false"); });
   }
-  function busy() { return tp < 1 || (auto && to < 3); }
   function moveTo(n) {
+    n = clamp(n, 0, 3);
     from = to; to = n; tp = 0; hold = 0;
     setStage(n);
-    if (reduce) { from = to = n; tp = 1; draw(); return; }
-    run();
+    if (reduce) { from = to = n; tp = 1; draw(); sync(); return; }
+    sync(); run();
   }
   function frame(now) {
     if (last === null) last = now;
     var dt = Math.min(0.05, (now - last) / 1000); last = now; clock += dt;
     if (tp < 1) tp = Math.min(1, tp + dt / MOVE);
     else if (auto && to < 3) { hold += dt; if (hold >= HOLD) moveTo(to + 1); }
-    root.classList.toggle("is-playing", busy());
-    draw();
+    else if (auto && to === 3) auto = false;
+    sync(); draw();
     // keep a gentle idle motion while visible
     if (visible) requestAnimationFrame(frame); else running = false;
   }
   function run() { if (!running && visible) { running = true; last = null; requestAnimationFrame(frame); } }
 
   function playFromStart() {
-    if (reduce) { auto = false; from = to = 3; tp = 1; setStage(3); draw(); return; }
-    auto = true; from = 0; to = 0; tp = 1; hold = 0; setStage(0);
-    root.classList.add("is-playing"); run();
+    if (reduce) { auto = false; from = to = 3; tp = 1; setStage(3); draw(); sync(); return; }
+    auto = true; from = 0; to = 0; tp = 1; hold = 0; setStage(0); sync(); run();
   }
+  function manual(n) { auto = false; moveTo(n); }
 
-  steps.forEach(function (b, k) { b.addEventListener("click", function () { auto = false; moveTo(k); }); });
+  steps.forEach(function (b, k) { b.addEventListener("click", function () { manual(k); }); });
+  dots.forEach(function (d, k) { d.addEventListener("click", function () { manual(k); }); });
+  if (btnPrev) btnPrev.addEventListener("click", function () { manual(to - 1); });
+  if (btnNext) btnNext.addEventListener("click", function () { manual(to + 1); });
+  if (btnPause) btnPause.addEventListener("click", function () {
+    if (to === 3 && tp >= 1) { playFromStart(); return; }
+    auto = !auto; hold = 0; sync(); run();
+  });
   replay.addEventListener("click", function () { playFromStart(); });
 
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
@@ -201,7 +222,7 @@
   if (mq.addEventListener) mq.addEventListener("change", onScheme); else if (mq.addListener) mq.addListener(onScheme);
 
   readColors();
-  setStage(3);
+  setStage(3); sync();
   if ("ResizeObserver" in window) new ResizeObserver(resize).observe(canvas); else window.addEventListener("resize", resize);
   resize();
 

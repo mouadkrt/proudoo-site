@@ -136,12 +136,12 @@
   function resize() {
     var w = canvas.clientWidth;
     if (!w) return;
-    W = w; H = Math.round(w >= 560 ? w * 0.56 : w * 0.95);
+    W = w; H = Math.round(w >= 560 ? clamp(w * 0.36, 210, 270) : w * 0.68);
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.style.height = H + "px";
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    PAD = { l: 14, r: 14, t: 26, b: 34 };
+    PAD = { l: 12, r: 12, t: 18, b: 26 };
     draw();
   }
 

@@ -13,6 +13,22 @@
 (function () {
   "use strict";
 
+  /* Back to top: shows after scrolling past one screen. */
+  var up = document.querySelector(".to-top");
+  if (up) {
+    up.hidden = false;
+    var onScroll = function () { up.classList.toggle("is-on", window.scrollY > window.innerHeight * 0.8); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    up.addEventListener("click", function (e) {
+      e.preventDefault();
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      var first = document.querySelector(".top a.brand");
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+
   var btn = document.querySelector(".theme-toggle");
   if (!btn) return;
 

@@ -225,3 +225,10 @@ footer a { color: var(--muted); }
 .top .brand-icon { display: inline-flex; border-radius: 9px; }
 .top .brand-icon:focus-visible { outline: 2px solid var(--hero); outline-offset: 2px; }
 #drift, #continuum { scroll-margin-top: 16px; }
+/* Floating "back to top" (all pages, assets/switch.js) */
+.to-top { position: fixed; z-index: 50; right: calc(14px + env(safe-area-inset-right, 0px)); bottom: calc(14px + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: var(--hero); color: var(--on-hero); box-shadow: 0 6px 20px rgba(20, 10, 50, .22); text-decoration: none; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+.to-top.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { color: var(--on-hero); filter: brightness(1.08); }
+.to-top:focus-visible { outline: 2px solid var(--hero); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
+@media print { .to-top { display: none; } }

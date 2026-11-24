@@ -146,26 +146,26 @@
   }
 
   /* ---------- timeline ---------- */
-
-  var END = 13.8, t = 0;
+  // Four phases: one week, the crowd appears, the year runs, the direction.
+  // In auto mode the animation pauses HOLD seconds at the end of each phase,
+  // so there is time to read the caption.
+  var PH = [{ a: 0, b: 4.0 }, { a: 4.0, b: 5.4 }, { a: 5.4, b: 15.4 }, { a: 15.4, b: 16.6 }];
+  var END = PH[3].b, HOLD = 2.4, t = 0, phase = 3;
   function state(t) {
     var day;
     if (t < 0.6) day = 0;
-    else if (t < 3.6) day = 14 * ease(prog(t, 0.6, 3.6));
-    else if (t < 5.6) day = 14;
-    else day = 14 + (DAYS - 14) * ease(prog(t, 5.6, 12.6));
+    else if (t < 4.0) day = 14 * ease(prog(t, 0.6, 4.0));
+    else if (t < 5.4) day = 14;
+    else day = 14 + (DAYS - 14) * ease(prog(t, 5.4, 15.4));
     return {
       t: t, day: day, xMax: Math.max(14, day),
-      crowdA: ease(prog(t, 3.6, 4.6)),
-      driftA: ease(prog(t, 12.6, 13.6))
+      crowdA: ease(prog(t, 4.0, 5.0)),
+      driftA: ease(prog(t, 15.4, 16.4))
     };
   }
-  function captionFor(t) {
+  function captionFor(ph) {
     var pc = Math.round(p * 100);
-    if (t < 3.6) return T.week;
-    if (t < 5.6) return T.crowd;
-    if (t < 12.6) return T.year(pc);
-    return pc === 50 ? T.flat : T.end;
+    return [T.week, T.crowd, T.year(pc), pc === 50 ? T.flat : T.end][ph];
   }
 
   var yr = { min: -10, max: 10 };
@@ -269,7 +269,13 @@
 
   /* ---------- playback ---------- */
 
-  var running = false, visible = !("IntersectionObserver" in window), started = false, last = null, lastCaption = "";
+  var nav = root.querySelector(".anim-nav");
+  var dots = nav ? Array.prototype.slice.call(nav.querySelectorAll(".anim-dot")) : [];
+  var btnPrev = nav && nav.querySelector(".anim-prev"), btnNext = nav && nav.querySelector(".anim-next");
+  var btnPause = nav && nav.querySelector(".anim-pause");
+
+  var running = false, visible = !("IntersectionObserver" in window), started = false;
+  var last = null, lastCaption = "", auto = false, hold = 0;
 
   function setCaption(text) {
     if (text !== lastCaption) { caption.textContent = text; lastCaption = text; }
@@ -277,43 +283,70 @@
   function setAria() {
     canvas.setAttribute("aria-label", T.aria(Math.round(p * 100), hero[DAYS]));
   }
+  function done() { return phase === 3 && t >= END; }
+  function sync() {
+    setCaption(captionFor(phase));
+    setCta(done());
+    root.classList.toggle("is-done", done() && !auto);
+    dots.forEach(function (d, k) { d.setAttribute("aria-current", k === phase ? "step" : "false"); });
+    if (btnPause) {
+      var playing = auto && !done();
+      btnPause.setAttribute("aria-pressed", playing ? "false" : "true");
+      btnPause.classList.toggle("is-paused", !playing);
+    }
+  }
   function loop(now) {
     if (!running) return;
     if (last === null) last = now;
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
-    t = Math.min(END, t + dt);
-    root.classList.toggle("is-playing", t < END);
-    draw();
-    setCaption(captionFor(t));
-    if (t >= END) setCta(true);
-    if (t >= END && Math.abs(yr.max - targetRange(state(t)).max) < 0.05) { running = false; return; }
-    if (visible) requestAnimationFrame(loop); else running = false;
+    var end = PH[phase].b;
+    if (t < end) t = Math.min(end, t + dt);
+    else if (auto && phase < 3) { hold += dt; if (hold >= HOLD) { hold = 0; phase++; } }
+    else if (auto && phase === 3) auto = false;
+    draw(); sync();
+    var settling = Math.abs(yr.max - targetRange(state(t)).max) > 0.05;
+    if ((t < PH[phase].b || auto || settling) && visible) requestAnimationFrame(loop);
+    else running = false;
   }
-  function play() {
+  function run() {
     if (running || !visible) return;
     running = true; last = null; requestAnimationFrame(loop);
   }
   function jumpToEnd() {
-    t = END; yr = targetRange(state(t)); draw(); setCaption(captionFor(t)); setCta(true);
-    root.classList.remove("is-playing");
+    phase = 3; t = END; auto = false; yr = targetRange(state(t)); draw(); sync();
   }
-  function start(fromZero) {
-    if (fromZero) { t = 0; yr = targetRange(state(0)); setCta(false); if (!reduce) root.classList.add("is-playing"); }
+  // Play one phase from its start; in auto mode, carry on to the end.
+  function goPhase(n, keepAuto) {
+    phase = clamp(n, 0, 3); hold = 0;
+    if (!keepAuto) auto = false;
+    if (reduce) { t = PH[phase].b; yr = targetRange(state(t)); draw(); sync(); return; }
+    t = PH[phase].a;
+    if (phase === 0) yr = targetRange(state(0));
+    sync(); run();
+  }
+  function playFromStart() {
     if (reduce) { jumpToEnd(); return; }
-    play();
+    auto = true; goPhase(0, true);
   }
+
+  dots.forEach(function (d, k) { d.addEventListener("click", function () { started = true; goPhase(k); }); });
+  if (btnPrev) btnPrev.addEventListener("click", function () { started = true; goPhase(phase - (t > PH[phase].a + 0.3 ? 0 : 1)); });
+  if (btnNext) btnNext.addEventListener("click", function () { started = true; goPhase(Math.min(3, phase + 1)); });
+  if (btnPause) btnPause.addEventListener("click", function () {
+    started = true;
+    if (done()) { playFromStart(); return; }
+    auto = !auto; hold = 0; sync(); if (auto) run();
+  });
 
   slider.addEventListener("input", function () {
     p = Number(slider.value) / 100;
     sliderOut.textContent = slider.value + " %";
-    buildHero(); setAria();
-    running = false; started = true;
-    t = END; draw(); setCaption(captionFor(t)); setCta(true);
-    // let the y-range settle smoothly
-    if (!reduce) { running = true; last = null; requestAnimationFrame(loop); } else jumpToEnd();
+    buildHero(); setAria(); started = true;
+    jumpToEnd();
+    if (!reduce) { yr = targetRange(state(t)); }
   });
   replay.addEventListener("click", function () {
-    generate(pickSeed()); setAria(); started = true; running = false; start(true);
+    generate(pickSeed()); setAria(); started = true; playFromStart();
   });
 
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
@@ -333,8 +366,8 @@
     new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         visible = e.isIntersecting;
-        if (visible && !started) { started = true; start(true); }
-        else if (visible && t < END) play();
+        if (visible && !started) { started = true; playFromStart(); }
+        else if (visible && (auto || t < PH[phase].b)) run();
       });
     }, { threshold: 0.45 }).observe(canvas);
   }

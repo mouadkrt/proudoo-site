@@ -136,12 +136,12 @@
   function resize() {
     var w = canvas.clientWidth;
     if (!w) return;
-    W = w; H = Math.round(w >= 560 ? clamp(w * 0.36, 210, 270) : w * 0.68);
+    W = w; H = Math.round(w >= 560 ? clamp(w * 0.3, 180, 220) : w * 0.62);
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.style.height = H + "px";
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    PAD = { l: 12, r: 12, t: 18, b: 26 };
+    PAD = { l: 12, r: 12, t: 16, b: 32 };
     draw();
   }
 
@@ -232,7 +232,7 @@
       ctx.strokeStyle = "rgba(" + C.hero + "," + (0.6 * s.driftA) + ")";
       ctx.beginPath(); ctx.moveTo(X(0, s), Y(0)); ctx.lineTo(X(s.day, s), Y(slope * s.day)); ctx.stroke();
       ctx.restore();
-      var mx = X(s.day * 0.45, s), my = Y(slope * s.day * 0.45);
+      var mx = X(s.day * 0.24, s), my = Y(slope * s.day * 0.24);
       ctx.font = MONO; ctx.textAlign = "center"; ctx.textBaseline = "top";
       label(T.direction, mx, my + 8, "rgba(" + C.hero + "," + s.driftA + ")", s.driftA);
     }
@@ -256,9 +256,10 @@
     label(T.start, PAD.l, Y(0) - 8, "rgba(" + C.muted + ",1)", 1);
 
     // day counter
-    ctx.font = MONO; ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
-    ctx.fillStyle = "rgba(" + C.muted + ",1)";
-    ctx.fillText(T.day + " " + Math.floor(s.day) + " / " + DAYS, PAD.l, H - 10);
+    ctx.font = "700 15px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "rgba(" + C.ink + ",1)";
+    ctx.fillText(T.day + " " + Math.floor(s.day) + " / " + DAYS, W / 2, H - 8);
 
     // y-range eases toward its target so the zoom-out feels like a camera
     var tg = targetRange(s);
@@ -281,6 +282,7 @@
     if (last === null) last = now;
     var dt = Math.min(0.05, (now - last) / 1000); last = now;
     t = Math.min(END, t + dt);
+    root.classList.toggle("is-playing", t < END);
     draw();
     setCaption(captionFor(t));
     if (t >= END) setCta(true);
@@ -293,9 +295,10 @@
   }
   function jumpToEnd() {
     t = END; yr = targetRange(state(t)); draw(); setCaption(captionFor(t)); setCta(true);
+    root.classList.remove("is-playing");
   }
   function start(fromZero) {
-    if (fromZero) { t = 0; yr = targetRange(state(0)); setCta(false); }
+    if (fromZero) { t = 0; yr = targetRange(state(0)); setCta(false); if (!reduce) root.classList.add("is-playing"); }
     if (reduce) { jumpToEnd(); return; }
     play();
   }

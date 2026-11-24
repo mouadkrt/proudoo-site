@@ -22,30 +22,32 @@
   var STRINGS = {
     en: {
       week: "Over one week, you can't tell whether it's working.",
-      crowd: "Here are 100 children with as many good days as bad ones.",
-      year: function (p) { return "Yours has just a few more good days: " + p + " out of 100."; },
-      end: "Bad days don't count. Direction does.",
-      flat: "At 50 %, he wanders like everyone else. The direction is what changes everything.",
+      crowd: "Here are 100 children left to chance: every day is a coin toss, forward or back.",
+      year: function (p) { return "Yours takes just a few more steps forward: " + p + " out of 100."; },
+      end: "Steps back don't count. Direction does.",
+      flat: "At 50 %, every day is a coin toss. Forward or back, it's pure chance.",
+      unit: "steps",
       start: "start",
       direction: "direction",
       day: "day",
       aria: function (p, end) {
-        return "Simulation over 365 days. A child with " + p + " % good days ends at " + fmt(end) +
-          " while 100 children at 50 % stay around zero.";
+        return "Simulation over 365 days. A child taking " + p + " % steps forward ends at " + fmt(end) +
+          " steps while 100 children left to chance stay around zero.";
       }
     },
     fr: {
       week: "Sur une semaine, impossible de dire si ça marche.",
-      crowd: "Voici cent enfants avec autant de bons jours que de mauvais.",
-      year: function (p) { return "Le vôtre a juste un peu plus de bons jours : " + p + " sur 100."; },
-      end: "Les mauvais jours ne comptent pas. La direction, si.",
-      flat: "À 50 %, il erre comme les autres. C'est la direction qui change tout.",
+      crowd: "Voici cent enfants livrés au hasard : chaque jour est un pile ou face, avancer ou reculer.",
+      year: function (p) { return "Le vôtre fait juste un peu plus de pas en avant : " + p + " sur 100."; },
+      end: "Les pas en arrière ne comptent pas. La direction, si.",
+      flat: "À 50 %, chaque jour est un pile ou face. Avancer ou reculer, c'est le hasard.",
+      unit: "pas",
       start: "départ",
       direction: "direction",
       day: "jour",
       aria: function (p, end) {
-        return "Simulation sur 365 jours. Un enfant avec " + p + " % de bons jours finit à " + fmt(end) +
-          ", tandis que cent enfants à 50 % restent autour de zéro.";
+        return "Simulation sur 365 jours. Un enfant qui fait " + p + " % de pas en avant finit à " + fmt(end) +
+          " pas, tandis que cent enfants livrés au hasard restent autour de zéro.";
       }
     }
   };
@@ -59,6 +61,9 @@
   var slider = root.querySelector("#drift-p");
   var sliderOut = root.querySelector(".drift-p-out");
   var replay = root.querySelector(".drift-replay");
+  var cta = root.querySelector(".drift-cta");
+  // The invitation is visible at rest (no JS, reduced motion); it waits while the year plays.
+  function setCta(on) { if (cta) cta.classList.toggle("is-waiting", !on); }
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function fmt(v) { return (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v); }
@@ -243,9 +248,8 @@
     ctx.restore();
     if (s.driftA > 0) {
       ctx.font = "600 " + MONO; ctx.textAlign = "right"; ctx.textBaseline = "middle";
-      ctx.fillStyle = "rgba(" + C.hero + "," + s.driftA + ")";
-      var ly = clamp(h.y + (h.y < Y(slope * s.day) ? -14 : 14), PAD.t, H - PAD.b - 6);
-      ctx.fillText(fmt(h.v), h.x - 10, ly);
+      var ly = clamp(h.y + (h.y < Y(slope * s.day) ? -16 : 16), PAD.t, H - PAD.b - 6);
+      label(fmt(h.v) + " " + T.unit, h.x - 12, ly, "rgba(" + C.hero + "," + s.driftA + ")", s.driftA);
     }
 
     ctx.font = MONO; ctx.textAlign = "left"; ctx.textBaseline = "bottom";
@@ -279,6 +283,7 @@
     t = Math.min(END, t + dt);
     draw();
     setCaption(captionFor(t));
+    if (t >= END) setCta(true);
     if (t >= END && Math.abs(yr.max - targetRange(state(t)).max) < 0.05) { running = false; return; }
     if (visible) requestAnimationFrame(loop); else running = false;
   }
@@ -287,10 +292,10 @@
     running = true; last = null; requestAnimationFrame(loop);
   }
   function jumpToEnd() {
-    t = END; yr = targetRange(state(t)); draw(); setCaption(captionFor(t));
+    t = END; yr = targetRange(state(t)); draw(); setCaption(captionFor(t)); setCta(true);
   }
   function start(fromZero) {
-    if (fromZero) { t = 0; yr = targetRange(state(0)); }
+    if (fromZero) { t = 0; yr = targetRange(state(0)); setCta(false); }
     if (reduce) { jumpToEnd(); return; }
     play();
   }
@@ -300,7 +305,7 @@
     sliderOut.textContent = slider.value + " %";
     buildHero(); setAria();
     running = false; started = true;
-    t = END; draw(); setCaption(captionFor(t));
+    t = END; draw(); setCaption(captionFor(t)); setCta(true);
     // let the y-range settle smoothly
     if (!reduce) { running = true; last = null; requestAnimationFrame(loop); } else jumpToEnd();
   });

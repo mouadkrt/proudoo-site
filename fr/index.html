@@ -46,21 +46,50 @@
 <p>L'application est donc construite autour des moments qui comptent : la quête que votre enfant a terminée tout seul, la série qu'il a gardée un jour chargé, la récompense qu'il a choisie lui-même, et le « Je suis fier de toi » que vous envoyez d'un geste.</p>
 
 <section class="drift" id="drift" aria-labelledby="drift-title">
-  <h2 id="drift-title">Ce que quelques bons jours de plus font en un an</h2>
-  <p>Tous les enfants ont des semaines en désordre, et une mauvaise semaine ne dit rien. Ce qui compte, c'est une petite pente régulière vers les bons jours. Ci-dessous, une vraie simulation dessinée en direct : bougez le curseur et voyez ce que quelques bons jours de plus changent sur une année.</p>
+  <h2 id="drift-title">Ce que quelques pas en avant de plus font en un an</h2>
+  <p>Tous les enfants ont des semaines en désordre, et une mauvaise semaine ne dit rien. Ce qui compte, c'est une petite pente régulière vers les pas en avant. Ci-dessous, une vraie simulation dessinée en direct : bougez le curseur et voyez ce que quelques pas en avant de plus changent sur une année.</p>
   <div class="card">
-    <p class="drift-caption" aria-live="polite">Les mauvais jours ne comptent pas. La direction, si.</p>
-    <canvas class="drift-canvas" role="img" aria-label="Simulation sur 365 jours d'un enfant avec un peu plus de bons jours que cent autres enfants."></canvas>
-    <div class="drift-legend"><span>Votre enfant</span><span class="crowd">100 enfants à 50 %</span></div>
+    <p class="drift-caption" aria-live="polite">Les pas en arrière ne comptent pas. La direction, si.</p>
+    <canvas class="drift-canvas" role="img" aria-label="Simulation sur 365 jours d'un enfant qui fait un peu plus de pas en avant que cent enfants livrés au hasard."></canvas>
+    <div class="drift-legend"><span>Votre enfant, un peu plus souvent en avant</span><span class="crowd">100 enfants livrés au hasard</span></div>
+    <div class="drift-cta"><p>Voyez ses pas en avant. Proudoo est gratuit sur Android.</p><a class="play-badge" href="https://play.google.com/store/apps/details?id=com.mouadkrt.chorbit" target="_blank" rel="noopener" data-goatcounter-click="play-home-drift-fr" data-goatcounter-title="Google Play (home-drift, fr)"><img src="/assets/badges/google-play-fr.png" alt="Disponible sur Google Play" width="646" height="250"></a></div>
   </div>
   <div class="drift-controls">
-    <label for="drift-p">Bons jours : <output class="drift-p-out" for="drift-p">55 %</output></label>
+    <label for="drift-p">Pas en avant : <output class="drift-p-out" for="drift-p">55 %</output></label>
     <input type="range" id="drift-p" min="50" max="60" step="1" value="55">
     <button type="button" class="drift-replay">Rejouer une autre année</button>
   </div>
   <p class="meta">Chaque visite tire une nouvelle année au hasard. Nous montrons des années typiques, proches du résultat moyen, jamais les plus chanceuses.</p>
 </section>
 <script src="/assets/drift.js" defer></script>
+
+<section class="drift continuum" id="continuum" data-stage="4" aria-labelledby="continuum-title">
+  <h2 id="continuum-title">D'où vient la direction ?</h2>
+  <p>Au début, de vous. Un jour, de lui. Les psychologues appellent cela l'intériorisation de la motivation : la raison d'agir passe, étape par étape, de l'extérieur vers l'intérieur.</p>
+  <div class="card">
+    <p class="drift-caption cont-caption" aria-live="polite">« Je le fais parce que c'est moi. »</p>
+    <div class="cont-stage" data-stage="4">
+    <svg class="cont-svg" viewBox="0 0 600 270" aria-hidden="true">
+      <g class="halo"><circle cx="300" cy="150" r="78"/><circle cx="300" cy="150" r="108"/><circle cx="300" cy="150" r="138"/></g>
+      <line class="ground" x1="40" y1="236" x2="560" y2="236"/>
+      <g class="ray ray-coins"><line x1="160" y1="66" x2="276" y2="140"/><line x1="452" y1="58" x2="324" y2="140"/><line x1="460" y1="206" x2="326" y2="184"/></g>
+      <line class="ray ray-parent" x1="140" y1="118" x2="274" y2="132"/>
+      <line class="ray ray-bulb" x1="300" y1="56" x2="300" y2="98"/>
+      <g class="fig src-coins"><circle cx="150" cy="60" r="11"/><circle cx="462" cy="52" r="11"/><circle cx="472" cy="210" r="11"/></g>
+      <g class="fig src-parent"><circle cx="112" cy="108" r="22"/><rect x="86" y="136" width="52" height="98" rx="16"/></g>
+      <g class="fig src-bulb"><circle cx="300" cy="34" r="14"/><line x1="292" y1="54" x2="308" y2="54"/></g>
+      <g class="fig child"><circle cx="300" cy="122" r="20"/><rect x="276" y="148" width="48" height="86" rx="14"/></g>
+    </svg>
+    </div>
+    <ol class="cont-steps"><li><button type="button" class="cont-step"><b>1</b><span>Les pièces</span></button></li><li><button type="button" class="cont-step"><b>2</b><span>Votre regard</span></button></li><li><button type="button" class="cont-step"><b>3</b><span>Le sens</span></button></li><li><button type="button" class="cont-step" aria-current="step"><b>4</b><span>Lui-même</span></button></li></ol>
+    <div class="cont-guide" aria-hidden="true"><span>avec Proudoo</span></div>
+    <p class="cont-final">Proudoo accompagne votre enfant de la première étape à la troisième, puis s'efface. Le jour où il n'a plus besoin de nous, c'est que nous avons réussi.</p>
+    <span class="cont-quote" hidden>« Je le fais pour les pièces. »</span><span class="cont-quote" hidden>« Je le fais pour ne pas te décevoir. »</span><span class="cont-quote" hidden>« Je le fais parce que je comprends pourquoi c'est important. »</span><span class="cont-quote" hidden>« Je le fais parce que c'est moi. »</span>
+  </div>
+  <div class="drift-controls"><button type="button" class="drift-replay cont-replay">Rejouer les quatre étapes</button></div>
+  <p class="meta">D'après la théorie de l'autodétermination (Deci et Ryan) : motivation externe, introjectée, identifiée puis intégrée.</p>
+</section>
+<script src="/assets/continuum.js" defer></script>
 
 <div class="card">
   <h2>Comment ça marche</h2>

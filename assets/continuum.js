@@ -220,6 +220,7 @@
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
   var onScheme = function () { readColors(); draw(); };
   if (mq.addEventListener) mq.addEventListener("change", onScheme); else if (mq.addListener) mq.addListener(onScheme);
+  document.addEventListener("proudoo:theme", onScheme);
 
   readColors();
   setStage(3); sync();

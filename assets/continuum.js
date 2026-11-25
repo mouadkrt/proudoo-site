@@ -28,9 +28,11 @@
   var replay = root.querySelector(".cont-replay");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var lang = (document.documentElement.lang || "en").slice(0, 2);
-  var ENDS = lang === "fr" ? ["extérieur", "intérieur"] : ["outside", "inside"];
+  var ENDS = { en: ["outside", "inside"], fr: ["extérieur", "intérieur"], ar: ["الخارج", "الداخل"] }[lang] || ["outside", "inside"];
 
-  var MONO = '12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
+  // Monospace spaces Arabic letters apart instead of joining them, so Arabic labels use the Arabic face.
+  var LABEL_FACE = lang === "ar" ? '"Noto Sans Arabic", sans-serif' : 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
+  var MONO = '12px ' + LABEL_FACE;
   var EMOJI_FONT = '"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
   var HOLD = 3.2, MOVE = 0.9;
 
@@ -86,7 +88,7 @@
   var from = 3, to = 3, tp = 1;
   function lightX() { return X[from] + (X[to] - X[from]) * ease(tp); }
   function glow() { return to === 3 ? ease(tp) : 0; }
-  function nearness(k) { return clamp(1 - Math.abs(lightX() - X[k]) / Math.max(1, (X[1] - X[0])), 0, 1); }
+  function nearness(k) { return clamp(1 - Math.abs(lightX() - X[k]) / Math.max(1, Math.abs(X[1] - X[0])), 0, 1); }
 
   function plate(text, x, y, color) {
     ctx.font = MONO; var w = ctx.measureText(text).width;
@@ -106,26 +108,28 @@
     ctx.setLineDash([2, 6]); ctx.lineWidth = 1; ctx.strokeStyle = "rgba(" + C.muted + ",.5)";
     ctx.beginPath(); ctx.moveTo(8, AY); ctx.lineTo(W - 8, AY); ctx.stroke();
     ctx.restore();
-    ctx.textAlign = "left"; plate(ENDS[0], 8, 10, "rgba(" + C.muted + ",1)");
-    ctx.textAlign = "right"; plate(ENDS[1], W - 8, 10, "rgba(" + C.muted + ",1)");
+    // Stations follow the step buttons, so in Arabic (right to left) "outside" is on the right.
+    var dir = X[3] >= X[0] ? 1 : -1;
+    ctx.textAlign = dir > 0 ? "left" : "right"; plate(ENDS[0], dir > 0 ? 8 : W - 8, 10, "rgba(" + C.muted + ",1)");
+    ctx.textAlign = dir > 0 ? "right" : "left"; plate(ENDS[1], dir > 0 ? W - 8 : 8, 10, "rgba(" + C.muted + ",1)");
 
     // trail along the axis, up to the light
     ctx.save();
     ctx.lineWidth = 3; ctx.lineCap = "round";
-    var grad = ctx.createLinearGradient(X[0], 0, Math.max(lx, X[0] + 1), 0);
+    var grad = ctx.createLinearGradient(X[0], 0, Math.abs(lx - X[0]) < 1 ? X[0] + dir : lx, 0);
     grad.addColorStop(0, "rgba(" + C.hero + ",0)"); grad.addColorStop(1, "rgba(" + C.hero + ",.85)");
     ctx.strokeStyle = grad;
     ctx.beginPath(); ctx.moveTo(X[0], AY); ctx.lineTo(lx, AY); ctx.stroke();
     ctx.restore();
 
     // the push: dashed arc from the source to the child, shorter at each stage
-    var dist = X[3] - lx;
+    var dist = (X[3] - lx) * dir;
     if (dist > 8) {
       var lift = Math.min(34, dist * 0.3), y0 = AY - SZ * 0.62;
       ctx.save();
       ctx.setLineDash([5, 6]); ctx.lineWidth = 1.5; ctx.strokeStyle = "rgba(" + C.hero + ",.7)";
-      ctx.beginPath(); ctx.moveTo(lx + SZ * 0.3, y0);
-      ctx.quadraticCurveTo((lx + X[3]) / 2, y0 - lift, X[3] - SZ * 0.35, y0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(lx + dir * SZ * 0.3, y0);
+      ctx.quadraticCurveTo((lx + X[3]) / 2, y0 - lift, X[3] - dir * SZ * 0.35, y0); ctx.stroke();
       ctx.restore();
     }
 
@@ -226,6 +230,8 @@
   setStage(3); sync();
   if ("ResizeObserver" in window) new ResizeObserver(resize).observe(canvas); else window.addEventListener("resize", resize);
   resize();
+  // Redraw once web fonts (the Arabic face) have loaded, so labels are not stuck on the fallback.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { draw(); });
 
   if ("IntersectionObserver" in window && !reduce) {
     var started = false;

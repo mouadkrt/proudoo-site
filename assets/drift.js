@@ -49,6 +49,25 @@
         return "Simulation sur 365 jours. Un enfant qui fait " + p + " % de pas en avant finit à " + fmt(end) +
           " pas, tandis que cent enfants livrés au hasard restent autour de zéro.";
       }
+    },
+    ar: {
+      week: "خلال أسبوع واحد، لا يمكنكم معرفة إن كان الأمر ينجح.",
+      crowd: "هؤلاء مئة طفل متروكون للصدفة: كل يوم رمية عملة، خطوة إلى الأمام أو إلى الوراء.",
+      year: function (p) { return "طفلكم يخطو فقط خطوات قليلة أكثر إلى الأمام: " + p + " من 100."; },
+      end: "الخطوات إلى الوراء لا تهم. الاتجاه هو ما يهم.",
+      flat: "عند 50%، كل يوم رمية عملة. إلى الأمام أو إلى الوراء، إنها الصدفة.",
+      // The number is isolated (LRI ... PDI) so "+47" is not reordered to "47+" in right-to-left text.
+      score: function (v) {
+        var n = Math.abs(v), w = n === 2 ? "خطوتان" : (n >= 3 && n <= 10) ? "خطوات" : "خطوة";
+        return "\u2066" + fmt(v) + "\u2069 " + w;
+      },
+      start: "البداية",
+      direction: "الاتجاه",
+      dayLabel: function (d, total) { return "اليوم " + d + " من " + total; },
+      aria: function (p, end) {
+        return "محاكاة على مدى 365 يومًا. طفل يخطو " + p + "% من خطواته إلى الأمام ينتهي عند " + fmt(end) +
+          " خطوة، بينما يبقى مئة طفل متروكون للصدفة حول الصفر.";
+      }
     }
   };
   var lang = (document.documentElement.lang || "en").slice(0, 2);
@@ -202,7 +221,9 @@
     ctx.fillStyle = color; ctx.fillText(text, x, y);
   }
 
-  var MONO = '12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
+  // Monospace spaces Arabic letters apart instead of joining them, so Arabic labels use the Arabic face.
+  var LABEL_FACE = lang === "ar" ? '"Noto Sans Arabic", sans-serif' : 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
+  var MONO = '12px ' + LABEL_FACE;
 
   function draw() {
     if (!W) return;
@@ -250,17 +271,17 @@
     if (s.driftA > 0) {
       ctx.font = "600 " + MONO; ctx.textAlign = "right"; ctx.textBaseline = "middle";
       var ly = clamp(h.y + (h.y < Y(slope * s.day) ? -16 : 16), PAD.t, H - PAD.b - 6);
-      label(fmt(h.v) + " " + T.unit, h.x - 12, ly, "rgba(" + C.hero + "," + s.driftA + ")", s.driftA);
+      label(T.score ? T.score(h.v) : fmt(h.v) + " " + T.unit, h.x - 12, ly, "rgba(" + C.hero + "," + s.driftA + ")", s.driftA);
     }
 
     ctx.font = MONO; ctx.textAlign = "left"; ctx.textBaseline = "bottom";
     label(T.start, PAD.l, Y(0) - 8, "rgba(" + C.muted + ",1)", 1);
 
     // day counter
-    ctx.font = "700 15px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    ctx.font = "700 15px " + LABEL_FACE;
     ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
     ctx.fillStyle = "rgba(" + C.ink + ",1)";
-    ctx.fillText(T.day + " " + Math.floor(s.day) + " / " + DAYS, W / 2, H - 8);
+    ctx.fillText(T.dayLabel ? T.dayLabel(Math.floor(s.day), DAYS) : T.day + " " + Math.floor(s.day) + " / " + DAYS, W / 2, H - 8);
 
     // y-range eases toward its target so the zoom-out feels like a camera
     var tg = targetRange(s);
@@ -360,6 +381,8 @@
   p = Number(slider.value) / 100; buildHero(); setAria();
   if ("ResizeObserver" in window) new ResizeObserver(resize).observe(canvas); else window.addEventListener("resize", resize);
   resize();
+  // Redraw once web fonts (the Arabic face) have loaded, so labels are not stuck on the fallback.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { draw(); });
 
   // Complete at rest: until the section is seen, show the final year.
   jumpToEnd();

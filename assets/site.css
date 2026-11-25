@@ -232,3 +232,9 @@ footer a { color: var(--muted); }
 .to-top:focus-visible { outline: 2px solid var(--hero); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
 @media print { .to-top { display: none; } }
+/* Header stays on screen while scrolling (full-width background, thin line under it). */
+html { scroll-padding-top: 116px; }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; padding-bottom: 12px;
+  /* full-width background with a 1px line at the bottom; border-image outset paints past the 760px column without widening the page */
+  border-image: linear-gradient(to top, var(--line) 1px, var(--bg) 1px) fill 0 / 0 / 0 100vmax; }
+#drift, #continuum { scroll-margin-top: 0; }

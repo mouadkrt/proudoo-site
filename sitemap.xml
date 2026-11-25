@@ -2,16 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://proudoo.app/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/"/>
   </url>
   <url>
     <loc>https://proudoo.app/fr/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/ar/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/"/>
   </url>
   <url>
@@ -19,6 +29,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/chores/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/taches/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/chores/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/chores/"/>
   </url>
   <url>
@@ -26,6 +37,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/chores/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/taches/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/chores/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/chores/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/ar/chores/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/chores/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/taches/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/chores/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/chores/"/>
   </url>
   <url>
@@ -33,6 +53,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pocket-money/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/argent-de-poche/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/pocket-money/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pocket-money/"/>
   </url>
   <url>
@@ -40,6 +61,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pocket-money/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/argent-de-poche/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/pocket-money/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pocket-money/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/ar/pocket-money/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pocket-money/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/argent-de-poche/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/pocket-money/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pocket-money/"/>
   </url>
   <url>
@@ -47,6 +77,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/routines/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/routines/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/routines/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/routines/"/>
   </url>
   <url>
@@ -54,6 +85,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/routines/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/routines/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/routines/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/routines/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/ar/routines/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/routines/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/routines/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/routines/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/routines/"/>
   </url>
   <url>
@@ -61,6 +101,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/faq/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/faq/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/faq/"/>
   </url>
   <url>
@@ -68,6 +109,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/faq/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/faq/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/ar/faq/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/faq/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/faq/"/>
   </url>
   <url>
@@ -75,6 +125,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pass/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/pass/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/pass/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pass/en/"/>
   </url>
   <url>
@@ -82,6 +133,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pass/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/pass/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/pass/ar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pass/en/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/pass/ar/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pass/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/pass/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/pass/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pass/en/"/>
   </url>
   <url>
@@ -89,6 +149,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pass/en/terms/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/pass/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/pass/ar/terms/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pass/en/terms/"/>
   </url>
   <url>
@@ -96,6 +157,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pass/en/terms/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/pass/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/pass/ar/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pass/en/terms/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/pass/ar/terms/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/pass/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/pass/conditions/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/pass/ar/terms/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/pass/en/terms/"/>
   </url>
   <url>
@@ -103,6 +173,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/privacy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/privacy/"/>
   </url>
   <url>
@@ -110,6 +181,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/privacy/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/privacy/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/ar/privacy/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/privacy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/privacy/"/>
   </url>
   <url>
@@ -117,6 +197,7 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/delete-account/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/delete-account/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/delete-account/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/delete-account/"/>
   </url>
   <url>
@@ -124,6 +205,15 @@
     <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/delete-account/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/delete-account/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/delete-account/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/delete-account/"/>
+  </url>
+  <url>
+    <loc>https://proudoo.app/ar/delete-account/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://proudoo.app/delete-account/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://proudoo.app/fr/delete-account/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://proudoo.app/ar/delete-account/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://proudoo.app/delete-account/"/>
   </url>
 </urlset>

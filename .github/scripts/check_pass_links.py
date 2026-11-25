@@ -13,7 +13,8 @@ from html.parser import HTMLParser
 from urllib.parse import urlparse
 
 # Opened by the app (Settings) or linked from the Play listing / Play Console.
-ENTRY_POINTS = ["/", "/fr/", "/privacy/", "/fr/privacy/", "/delete-account/", "/fr/delete-account/"]
+ENTRY_POINTS = ["/", "/fr/", "/ar/", "/privacy/", "/fr/privacy/", "/ar/privacy/",
+                "/delete-account/", "/fr/delete-account/", "/ar/delete-account/"]
 SITE_HOSTS = {"proudoo.app", "www.proudoo.app"}
 ROOT = os.getcwd()
 

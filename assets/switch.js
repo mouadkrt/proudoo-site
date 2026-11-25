@@ -33,10 +33,12 @@
   if (!btn) return;
 
   var html = document.documentElement;
-  var fr = (html.lang || "en").slice(0, 2) === "fr";
-  var LABEL = fr
-    ? { toDark: "Passer en mode sombre", toLight: "Passer en mode clair" }
-    : { toDark: "Switch to dark mode", toLight: "Switch to light mode" };
+  var LABELS = {
+    en: { toDark: "Switch to dark mode", toLight: "Switch to light mode" },
+    fr: { toDark: "Passer en mode sombre", toLight: "Passer en mode clair" },
+    ar: { toDark: "التبديل إلى الوضع الداكن", toLight: "التبديل إلى الوضع الفاتح" }
+  };
+  var LABEL = LABELS[(html.lang || "en").slice(0, 2)] || LABELS.en;
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
 
   function isDark() {
